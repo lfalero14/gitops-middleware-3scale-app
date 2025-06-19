@@ -7,5 +7,5 @@ resources:
 
   - developer-accounts/developeraccount-devsecops.yaml
 
-  - developer-users/developeruser-admin-secret.yaml
-  - developer-users/developeruser-admin.yaml
+  - developer-users/developeruser-lfalero-secret.yaml
+  - developer-users/developeruser-lfalero.yaml
