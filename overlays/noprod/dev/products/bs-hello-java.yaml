@@ -65,4 +65,7 @@ spec:
     apicastSelfManaged:
       stagingPublicBaseURL: "https://bs-hello-java-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
       productionPublicBaseURL: "https://bs-hello-java.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-
+    authentication:
+      userkey:
+        authUserKey: user_key
+        credentials: headers
