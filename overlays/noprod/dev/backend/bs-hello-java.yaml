@@ -11,13 +11,37 @@ spec:
     name: dev-tenant-secret
 
   methods:
-    hello_v1:
-      friendlyName: "Hello V1"
+    get_hello_v1:
+      friendlyName: "GET Hello V1"
+      description: ""
+    get_hello_v2:
+      friendlyName: "GET Hello V2"
+      description: ""
+    get_date_v1:
+      friendlyName: "GET Date V1"
+      description: ""
+    get_date_v2:
+      friendlyName: "GET Date V2"
       description: ""
 
   mappingRules:
     - httpMethod: GET
       pattern: "/bs/v1/hello"
-      metricMethodRef: hello_v1
+      metricMethodRef: get_hello_v1
+      increment: 1
+      last: true
+    - httpMethod: GET
+      pattern: "/bs/v2/hello"
+      metricMethodRef: get_hello_v2
+      increment: 1
+      last: true    
+    - httpMethod: GET
+      pattern: "/bs/v1/date"
+      metricMethodRef: get_date_v1
+      increment: 1
+      last: true
+    - httpMethod: GET
+      pattern: "/bs/v2/date"
+      metricMethodRef: get_date_v2
       increment: 1
       last: true
