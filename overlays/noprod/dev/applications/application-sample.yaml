@@ -1,0 +1,13 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Application
+metadata:
+  name: application-sample
+spec:
+  name: testApp
+  description: "testing application"
+  accountCR:
+    name: developeraccount-devsecops
+  productCR:
+    name: bs-hello-java
+  applicationPlanName: basic
+  suspend: false

@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - backends/bs-hello-java.yaml
 
-  - products/bs-hello-java.yaml
-
   - developer-accounts/developeraccount-devsecops.yaml
-
   - developer-users/developeruser-lfalero-secret.yaml
   - developer-users/developeruser-lfalero.yaml
+
+  - products/bs-hello-java.yaml
+  - applications/application-sample.yaml
