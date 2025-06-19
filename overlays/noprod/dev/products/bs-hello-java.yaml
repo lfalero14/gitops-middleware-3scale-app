@@ -6,3 +6,5 @@ spec:
   name: "BS Hello Java"
   systemName: "bs-hello-java"
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
+  providerAccountRef:
+    name: dev-tenant-secret
