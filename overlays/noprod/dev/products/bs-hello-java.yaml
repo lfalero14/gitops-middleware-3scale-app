@@ -4,6 +4,7 @@ metadata:
   name: bs-hello-java
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   name: "BS Hello Java"
   systemName: bs_hello_java_product
