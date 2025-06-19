@@ -60,3 +60,9 @@ spec:
       costMonth: "0.00"
       custom: false
       state: published
+
+  deployment:
+    apicastSelfManaged:
+      stagingPublicBaseURL: "https://bs-hello-java-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      productionPublicBaseURL: "https://bs-hello-java.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+
