@@ -9,3 +9,8 @@ spec:
   privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
   providerAccountRef:
     name: dev-tenant-secret
+
+  methods:
+    hello-v1:
+      friendlyName: "Hello V1"
+      description: ""
