@@ -2,6 +2,8 @@ apiVersion: capabilities.3scale.net/v1beta1
 kind: Backend
 metadata:
   name: bs-hello-java
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false
 spec:
   name: "BS Hello Java"
   systemName: bs_hello_java_backend
