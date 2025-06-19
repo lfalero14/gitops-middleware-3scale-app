@@ -1,0 +1,8 @@
+kind: Product
+apiVersion: capabilities.3scale.net/v1beta1
+metadata:
+  name: bs-hello-java
+spec:
+  name: "BS Hello Java"
+  systemName: "bs-hello-java"
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
