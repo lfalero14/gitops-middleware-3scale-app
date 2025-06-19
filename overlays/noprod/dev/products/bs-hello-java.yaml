@@ -9,6 +9,10 @@ spec:
   providerAccountRef:
     name: dev-tenant-secret
 
+  backendUsages:
+    bs_hello_java:
+      path: "/"
+
   methods:
     get_hello_v1:
       friendlyName: "GET Hello V1"
