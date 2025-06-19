@@ -14,3 +14,10 @@ spec:
     hello_v1:
       friendlyName: "Hello V1"
       description: ""
+
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/bs/v1/hello"
+      metricMethodRef: hello_v1
+      increment: 1
+      last: true
