@@ -34,7 +34,7 @@ spec:
       pattern: "/bs/v2/hello"
       metricMethodRef: get_hello_v2
       increment: 1
-      last: true    
+      last: true
     - httpMethod: GET
       pattern: "/bs/v1/date"
       metricMethodRef: get_date_v1
