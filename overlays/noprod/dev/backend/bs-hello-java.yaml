@@ -1,0 +1,9 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: bs-hello-java
+spec:
+  name: "BS Hello Java"
+  systemName: "bs-hello-java"
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
+  privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
