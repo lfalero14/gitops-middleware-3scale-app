@@ -11,6 +11,6 @@ spec:
     name: dev-tenant-secret
 
   methods:
-    hello-v1:
+    hello_v1:
       friendlyName: "Hello V1"
       description: ""
