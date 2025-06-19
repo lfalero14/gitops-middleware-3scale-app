@@ -4,13 +4,13 @@ metadata:
   name: bs-hello-java
 spec:
   name: "BS Hello Java"
-  systemName: "bs-hello-java"
+  systemName: bs_hello_java_product
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
   providerAccountRef:
     name: dev-tenant-secret
 
   backendUsages:
-    bs_hello_java:
+    bs_hello_java_backend:
       path: "/"
 
   methods:
