@@ -7,3 +7,5 @@ spec:
   systemName: "bs-hello-java"
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
   privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
+  providerAccountRef:
+    name: dev-admin-secret
