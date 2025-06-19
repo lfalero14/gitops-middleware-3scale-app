@@ -54,7 +54,7 @@ spec:
       name: Basic
       appsRequireApproval: false
       trialPeriod: 0
-      setupFee: 0.0
-      costMonth: 0.0
+      setupFee: "0.0"
+      costMonth: "0.0"
       custom: false
       state: published
