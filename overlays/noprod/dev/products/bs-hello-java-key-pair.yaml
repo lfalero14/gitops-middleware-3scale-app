@@ -16,10 +16,11 @@ spec:
     apicastSelfManaged:
       stagingPublicBaseURL: "https://bs-hello-java-key-pair-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
       productionPublicBaseURL: "https://bs-hello-java-key-pair.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-      appKeyAppID:
-        appID: app_id
-        appKey: app_key
-        credentials: headers
+      authentication:
+        appKeyAppID:
+          appID: app_id
+          appKey: app_key
+          credentials: headers
 
   backendUsages:
     bs_hello_java_backend:
