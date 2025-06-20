@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pre-sync-check-tenant
+  name: pre-sync-check-tenant-3scale-dev
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
@@ -29,7 +29,7 @@ spec:
 
                 APIMANAGER_AVAILABLE=$(oc get apimanager ${APIMANAGER} -o jsonpath='{.status.conditions[?(@.type=="Available")].status}')
                 if [[ "${APIMANAGER_AVAILABLE}" != "True" ]]; then
-                  echo "[Intento $i] APIManager no está en estado Available. Esperando 30s..."
+                  echo "[Intento $i] APIManager no está listo aún. Esperando 30s..."
                   sleep 30
                   continue
                 fi
@@ -37,6 +37,13 @@ spec:
                 TENANT_EXISTS=$(oc get tenant ${TENANT} --ignore-not-found)
                 if [[ -z "${TENANT_EXISTS}" ]]; then
                   echo "[Intento $i] Tenant ${TENANT} aún no existe. Esperando 30s..."
+                  sleep 30
+                  continue
+                fi
+
+                TENANT_READY=$(oc get tenant ${TENANT} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
+                if [[ "${TENANT_READY}" != "True" ]]; then
+                  echo "[Intento $i] Tenant ${TENANT} no está listo aún. Esperando 30s..."
                   sleep 30
                   continue
                 fi
