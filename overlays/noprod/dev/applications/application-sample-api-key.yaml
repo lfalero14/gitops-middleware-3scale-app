@@ -1,0 +1,16 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Application
+metadata:
+  name: application-sample-api-key
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  name: "API Key Test App"
+  description: "Sample application configured with API Key authentication"
+  accountCR:
+    name: developeraccount-devsecops
+  productCR:
+    name: bs-hello-java-api-key
+  applicationPlanName: basic
+  suspend: false
