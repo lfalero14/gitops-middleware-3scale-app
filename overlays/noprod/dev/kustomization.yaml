@@ -7,5 +7,7 @@ resources:
 
   - backends/bs-hello-java.yaml
 
-  - products/bs-hello-java.yaml
-  - applications/application-sample.yaml
+  - products/bs-hello-java-api-key.yaml
+  - applications/application-sample-api-key.yaml
+  - application-auths/applicationauth-sample-api-key-secret.yaml
+  - application-auths/applicationauth-sample-api-key.yaml
