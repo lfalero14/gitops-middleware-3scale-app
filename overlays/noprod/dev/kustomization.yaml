@@ -14,5 +14,5 @@ resources:
 
   - products/bs-hello-java-key-pair.yaml
   - applications/application-sample-key-pair.yaml
-#  - application-auths/applicationauth-sample-key-pair-secret.yaml
-#  - application-auths/applicationauth-sample-key-pair.yaml
+  - application-auths/applicationauth-sample-key-pair-secret.yaml
+  - application-auths/applicationauth-sample-key-pair.yaml
