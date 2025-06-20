@@ -1,25 +1,25 @@
 kind: Product
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: bs-hello-java-api-key
+  name: bs-hello-java-key-pair
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  name: "API Key BS Hello Java"
-  systemName: bs_hello_java_api_key_product
+  name: "Key Pair BS Hello Java"
+  systemName: bs_hello_java_key_pair_product
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
   providerAccountRef:
     name: dev-tenant-secret
 
   deployment:
     apicastSelfManaged:
-      stagingPublicBaseURL: "https://bs-hello-java-api-key-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-      productionPublicBaseURL: "https://bs-hello-java-api-key.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-      authentication:
-        userkey:
-          authUserKey: user_key
-          credentials: headers
+      stagingPublicBaseURL: "https://bs-hello-java-key-pair-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      productionPublicBaseURL: "https://bs-hello-java-key-pair.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      appKeyAppID:
+        appID: app_id
+        appKey: app_key
+        credentials: headers
 
   backendUsages:
     bs_hello_java_backend:

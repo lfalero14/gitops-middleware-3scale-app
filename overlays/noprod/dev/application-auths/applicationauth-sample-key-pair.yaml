@@ -1,0 +1,14 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: ApplicationAuth
+metadata:
+  name: applicationauth-sample-key-pair
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  applicationCRName: application-sample-key-pair
+  authSecretRef:
+    name: applicationauth-sample-key-pair-secret
+  generateSecret: false
+  providerAccountRef:
+    name: dev-tenant-secret
