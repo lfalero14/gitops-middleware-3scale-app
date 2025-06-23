@@ -9,7 +9,7 @@ spec:
   name: "OpenID Test App"
   description: "Sample application configured with OpenID authentication"
   accountCR:
-    name: developeraccount-devsecops
+    name: developeraccount-devsecops-uat
   productCR:
     name: bs-hello-java-openid
   applicationPlanName: basic
