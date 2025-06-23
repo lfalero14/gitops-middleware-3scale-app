@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - hook/operator_pre-hook.yaml
 
-  - developer-accounts/developeraccount-devsecops-uat.yaml
-  - developer-users/developeruser-lfalero-uat-secret.yaml
-  - developer-users/developeruser-lfalero-uat.yaml
+  - developer-accounts/developeraccount-devsecops.yaml
+  - developer-users/developeruser-lfalero-secret.yaml
+  - developer-users/developeruser-lfalero.yaml
 
   - backends/bs-hello-java.yaml
 

@@ -4,9 +4,9 @@ resources:
   - hook/operator_pre-hook.yaml
   - hook/operator_post-hook.yaml
 
-  - developer-accounts/developeraccount-devsecops-dev.yaml
-  - developer-users/developeruser-lfalero-dev-secret.yaml
-  - developer-users/developeruser-lfalero-dev.yaml
+  - developer-accounts/developeraccount-devsecops.yaml
+  - developer-users/developeruser-lfalero-secret.yaml
+  - developer-users/developeruser-lfalero.yaml
 
   - backends/bs-hello-java.yaml
 
