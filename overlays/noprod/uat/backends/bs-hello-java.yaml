@@ -1,0 +1,50 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: bs-hello-java
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  name: "BS Hello Java"
+  systemName: bs_hello_java_backend
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
+  privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
+  providerAccountRef:
+    name: uat-tenant-secret
+
+  methods:
+    get_hello_v1:
+      friendlyName: "GET Hello V1"
+      description: ""
+    get_hello_v2:
+      friendlyName: "GET Hello V2"
+      description: ""
+    get_date_v1:
+      friendlyName: "GET Date V1"
+      description: ""
+    get_date_v2:
+      friendlyName: "GET Date V2"
+      description: ""
+
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/bs/v1/hello"
+      metricMethodRef: get_hello_v1
+      increment: 1
+      last: true
+    - httpMethod: GET
+      pattern: "/bs/v2/hello"
+      metricMethodRef: get_hello_v2
+      increment: 1
+      last: true
+    - httpMethod: GET
+      pattern: "/bs/v1/date"
+      metricMethodRef: get_date_v1
+      increment: 1
+      last: true
+    - httpMethod: GET
+      pattern: "/bs/v2/date"
+      metricMethodRef: get_date_v2
+      increment: 1
+      last: true

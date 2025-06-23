@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - hook/operator_pre-hook.yaml
+
+  - developer-accounts/developeraccount-devsecops.yaml
+  - developer-users/developeruser-lfalero-secret.yaml
+  - developer-users/developeruser-lfalero.yaml
+
+  - backends/bs-hello-java.yaml
+
+  - products/bs-hello-java-openid-secret.yaml
+  - products/bs-hello-java-openid.yaml
+  - applications/application-sample-openid.yaml
+  - application-auths/applicationauth-sample-openid-secret.yaml
+  - application-auths/applicationauth-sample-openid.yaml
