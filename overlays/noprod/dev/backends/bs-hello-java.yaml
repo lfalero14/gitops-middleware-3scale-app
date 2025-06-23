@@ -8,7 +8,7 @@ metadata:
 spec:
   name: "BS Hello Java"
   systemName: bs_hello_java_backend
-  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de UAT"
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de DEV"
   privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
   providerAccountRef:
     name: dev-tenant-secret
