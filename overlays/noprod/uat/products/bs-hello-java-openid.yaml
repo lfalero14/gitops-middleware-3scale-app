@@ -21,7 +21,7 @@ spec:
           authenticationFlow:
             standardFlowEnabled: true
             implicitFlowEnabled: false
-            serviceAccountsEnabled: false            
+            serviceAccountsEnabled: true            
             directAccessGrantsEnabled: false
           credentials: headers
           issuerType: keycloak
