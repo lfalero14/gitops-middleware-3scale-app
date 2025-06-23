@@ -6,10 +6,10 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  username: lfalero
+  username: lfalero-uat
   passwordCredentialsRef:
     name: developeruser-lfalero-uat-secret
-  email: lfalero@redhat.com
+  email: lfalero-uat@redhat.com
   role: admin
   developerAccountRef:
     name: developeraccount-devsecops-uat
