@@ -6,8 +6,8 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  name: "API Key BS Hello Java"
-  systemName: bs_hello_java_api_key_product
+  name: "OpenID BS Hello Java"
+  systemName: bs_hello_java_openid_product
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift."
   providerAccountRef:
     name: uat-tenant-secret
