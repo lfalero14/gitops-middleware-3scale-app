@@ -1,16 +1,16 @@
 apiVersion: capabilities.3scale.net/v1beta1
 kind: Application
 metadata:
-  name: application-sample-openid-uat
+  name: application-sample-openid-dev
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "3"
 spec:
   name: "OpenID Test App"
-  description: "Aplicación de muestra configurada con autenticación OpenID en UAT"
+  description: "Aplicación de muestra configurada con autenticación OpenID en DEV"
   accountCR:
-    name: developeraccount-devsecops-uat
+    name: developeraccount-devsecops-dev
   productCR:
-    name: bs-hello-java-openid-uat
+    name: bs-hello-java-openid-dev
   applicationPlanName: basic
   suspend: false

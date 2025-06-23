@@ -1,21 +1,21 @@
 kind: Product
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: bs-hello-java-openid-dev
+  name: bs-hello-java-openid-uat
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
   name: "OpenID BS Hello Java"
   systemName: bs_hello_java_openid_product
-  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de DEV"
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de UAT"
   providerAccountRef:
-    name: dev-tenant-secret
+    name: uat-tenant-secret
 
   deployment:
     apicastSelfManaged:
-      stagingPublicBaseURL: "https://bs-hello-java-openid-dev-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-      productionPublicBaseURL: "https://bs-hello-java-openid-dev.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      stagingPublicBaseURL: "https://bs-hello-java-openid-uat-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      productionPublicBaseURL: "https://bs-hello-java-openid-uat.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
       authentication:
         oidc:
           authenticationFlow:
@@ -26,7 +26,7 @@ spec:
           credentials: headers
           issuerType: keycloak
           issuerEndpointRef:
-            name: bs-hello-java-openid-dev-secret
+            name: bs-hello-java-openid-uat-secret
           jwtClaimWithClientID: azp
           jwtClaimWithClientIDType: plain
 

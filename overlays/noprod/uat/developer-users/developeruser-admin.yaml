@@ -1,15 +1,15 @@
 kind: DeveloperUser
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: developeruser-lfalero-uat
+  name: developeruser-admin-uat
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "3"
 spec:
-  username: lfalero-uat
+  username: admin-uat
   passwordCredentialsRef:
-    name: developeruser-lfalero-uat-secret
-  email: lfalero-uat@redhat.com
+    name: developeruser-admin-uat-secret
+  email: admin-uat@redhat.com
   role: admin
   developerAccountRef:
     name: developeraccount-devsecops-uat
