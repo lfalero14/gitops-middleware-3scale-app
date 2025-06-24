@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: post-sync-promote-products-dev
+  name: post-sync-promote-products-uat
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
@@ -17,7 +17,7 @@ spec:
             - -c
             - |
               echo "[INFO] Iniciando promoción de Products en 3scale..."
-              TENANT_SECRET="dev-tenant-secret"
+              TENANT_SECRET="uat-tenant-secret"
               TOKEN=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.token}' | base64 -d)
               ADMIN_URL=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.adminURL}' | base64 -d)
 
