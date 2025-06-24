@@ -16,33 +16,48 @@ spec:
             - /bin/bash
             - -c
             - |
-              echo "[INFO] Iniciando promoción de Products en 3scale..."
-              TENANT_SECRET="uat-tenant-secret"
-              TOKEN=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.token}' | base64 -d)
-              ADMIN_URL=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.adminURL}' | base64 -d)
+              for i in {1..60}; do
 
-              echo "[INFO] Descargando lista de Products..."
-              curl -s -o /tmp/services.xml "${ADMIN_URL}/admin/api/services.xml?access_token=${TOKEN}&page=1&per_page=500"
-              IDS=$(xmllint --xpath "//service/id/text()" /tmp/services.xml)
+                NOT_SYNCED=$(oc get products.capabilities.3scale.net -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.conditions[?(@.type=="Synced")].status}{"\n"}{end}' | awk '$2 != "True"')
 
-              echo ""
-              echo "[INFO] Promoviendo configuración de APIcast al entorno de *staging*..."
-              for ID in ${IDS}; do
-                echo "[INFO] Promoviendo Product ID *${ID}*"
-                curl -s -k -X POST "${ADMIN_URL}/admin/api/services/${ID}/proxy/deploy.xml" \
-                  -H "Content-Type: application/x-www-form-urlencoded" \
-                  -d "access_token=${TOKEN}" > /dev/null 2>&1
+                if ! [[ -z "$NOT_SYNCED" ]]; then
+                  echo "[Intento $i] Products no están sincronizados aún. Esperando 30s..."
+                  sleep 30
+                  continue
+                fi
+
+                echo "[INFO] Iniciando promoción de Products en 3scale..."
+                TENANT_SECRET="uat-tenant-secret"
+                TOKEN=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.token}' | base64 -d)
+                ADMIN_URL=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.adminURL}' | base64 -d)
+
+                echo "[INFO] Descargando lista de Products..."
+                curl -s -o /tmp/services.xml "${ADMIN_URL}/admin/api/services.xml?access_token=${TOKEN}&page=1&per_page=500"
+                IDS=$(xmllint --xpath "//service/id/text()" /tmp/services.xml)
+
+                echo ""
+                echo "[INFO] Promoviendo configuración de APIcast al entorno de *staging*..."
+                for ID in ${IDS}; do
+                  echo "[INFO] Promoviendo Product ID *${ID}*"
+                  curl -s -k -X POST "${ADMIN_URL}/admin/api/services/${ID}/proxy/deploy.xml" \
+                    -H "Content-Type: application/x-www-form-urlencoded" \
+                    -d "access_token=${TOKEN}" > /dev/null 2>&1
+                done
+
+                echo ""
+                echo "[INFO] Promoviendo configuración de APIcast al entorno de *production*..."
+                for ID in ${IDS}; do
+                  curl -s -o /tmp/latest.json "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/latest.json?access_token=${TOKEN}"
+                  VERSION=$(grep '"version"' /tmp/latest.json | head -n1 | sed -E 's/.*"version":\s*([0-9]+).*/\1/')
+                  echo "[INFO] Promoviendo Product ID *${ID}* a la versión *${VERSION}*"
+
+                  curl -s -k -X POST "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/${VERSION}/promote.json" \
+                    -H "Content-Type: application/x-www-form-urlencoded" \
+                    -d "access_token=${TOKEN}&to=production" > /dev/null 2>&1
+                done
+
+                exit 0
               done
-
-              echo ""
-              echo "[INFO] Promoviendo configuración de APIcast al entorno de *production*..."
-              for ID in ${IDS}; do
-                curl -s -o /tmp/latest.json "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/latest.json?access_token=${TOKEN}"
-                VERSION=$(grep '"version"' /tmp/latest.json | head -n1 | sed -E 's/.*"version":\s*([0-9]+).*/\1/')
-                echo "[INFO] Promoviendo Product ID *${ID}* a la versión *${VERSION}*"
-
-                curl -s -k -X POST "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/${VERSION}/promote.json" \
-                  -H "Content-Type: application/x-www-form-urlencoded" \
-                  -d "access_token=${TOKEN}&to=production" > /dev/null 2>&1
-              done
+              echo "Timeout esperando que Products estén sincronizados"
+              exit 1
       restartPolicy: Never
