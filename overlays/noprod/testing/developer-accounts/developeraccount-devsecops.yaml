@@ -1,11 +1,11 @@
 apiVersion: capabilities.3scale.net/v1beta1
 kind: DeveloperAccount
 metadata:
-  name: developeraccount-devsecops-uat
+  name: developeraccount-devsecops-testing
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  orgName: DevSecOpsUat
+  orgName: DevSecOpsTesting
   providerAccountRef:
-    name: uat-tenant-secret
+    name: testing-tenant-secret

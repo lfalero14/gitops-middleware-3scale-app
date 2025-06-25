@@ -10,16 +10,6 @@ resources:
 
   - backends/bs-hello-java.yaml
 
-  #- products/bs-hello-java-api-key.yaml
-  #- applications/application-sample-api-key.yaml
-  #- application-auths/applicationauth-sample-api-key-secret.yaml
-  #- application-auths/applicationauth-sample-api-key.yaml
-
-  #- products/bs-hello-java-key-pair.yaml
-  #- applications/application-sample-key-pair.yaml
-  #- application-auths/applicationauth-sample-key-pair-secret.yaml
-  #- application-auths/applicationauth-sample-key-pair.yaml
-
   - products/bs-hello-java-openid-secret.yaml
   - products/bs-hello-java-openid.yaml
   - applications/application-sample-openid.yaml

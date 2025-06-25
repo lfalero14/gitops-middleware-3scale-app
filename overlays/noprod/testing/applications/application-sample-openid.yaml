@@ -1,16 +1,16 @@
 apiVersion: capabilities.3scale.net/v1beta1
 kind: Application
 metadata:
-  name: application-sample-key-pair
+  name: application-sample-openid-testing
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "3"
 spec:
-  name: "Key Pair Test App"
-  description: "Sample application configured with Key Pair authentication"
+  name: "OpenID Test App"
+  description: "Aplicación de muestra configurada con autenticación OpenID en TESTING"
   accountCR:
-    name: developeraccount-devsecops-dev
+    name: developeraccount-devsecops-testing
   productCR:
-    name: bs-hello-java-key-pair
+    name: bs-hello-java-openid-testing
   applicationPlanName: basic
   suspend: false
