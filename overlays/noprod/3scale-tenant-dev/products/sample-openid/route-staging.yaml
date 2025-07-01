@@ -6,7 +6,7 @@ spec:
   host: openid-dev-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com
   to:
     kind: Service
-    name: apicast-production
+    name: apicast-staging
   tls:
     termination: edge
   path: /
