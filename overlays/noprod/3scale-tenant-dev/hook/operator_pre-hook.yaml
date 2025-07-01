@@ -19,29 +19,31 @@ spec:
               echo "Esperando que el APIManager y el Tenant estén disponibles..."
               APIMANAGER="apimanager"
               TENANT="3scale-dev"
+              NAMESPACE="3scale"
+
               for i in {1..60}; do
-                APIMANAGER_EXISTS=$(oc get apimanager ${APIMANAGER} --ignore-not-found)
+                APIMANAGER_EXISTS=$(oc -n ${NAMESPACE} get apimanager ${APIMANAGER} --ignore-not-found)
                 if [[ -z "${APIMANAGER_EXISTS}" ]]; then
                   echo "[Intento $i] APIManager aún no existe. Esperando 30s..."
                   sleep 30
                   continue
                 fi
 
-                APIMANAGER_AVAILABLE=$(oc get apimanager ${APIMANAGER} -o jsonpath='{.status.conditions[?(@.type=="Available")].status}')
+                APIMANAGER_AVAILABLE=$(oc -n ${NAMESPACE} get apimanager ${APIMANAGER} -o jsonpath='{.status.conditions[?(@.type=="Available")].status}')
                 if [[ "${APIMANAGER_AVAILABLE}" != "True" ]]; then
                   echo "[Intento $i] APIManager no está listo aún. Esperando 30s..."
                   sleep 30
                   continue
                 fi
 
-                TENANT_EXISTS=$(oc get tenant ${TENANT} --ignore-not-found)
+                TENANT_EXISTS=$(oc -n ${NAMESPACE} get tenant ${TENANT} --ignore-not-found)
                 if [[ -z "${TENANT_EXISTS}" ]]; then
                   echo "[Intento $i] Tenant ${TENANT} aún no existe. Esperando 30s..."
                   sleep 30
                   continue
                 fi
 
-                TENANT_READY=$(oc get tenant ${TENANT} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
+                TENANT_READY=$(oc -n ${NAMESPACE} get tenant ${TENANT} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
                 if [[ "${TENANT_READY}" != "True" ]]; then
                   echo "[Intento $i] Tenant ${TENANT} no está listo aún. Esperando 30s..."
                   sleep 30
