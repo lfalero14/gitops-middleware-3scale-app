@@ -1,0 +1,29 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIcast
+metadata:
+  name: production
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  logLevel: info
+  pathRoutingEnabled: false
+  responseCodesIncluded: true
+  openSSLPeerVerificationEnabled: false
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 500m
+      memory: 64Mi
+  extendedMetrics: true
+  deploymentEnvironment: production
+  adminPortalCredentialsRef:
+    name: testing-tenant-apicast-secret
+  oidcLogLevel: info
+  timezone: America/Lima
+  replicas: 1
+  managementAPIScope: status
+  configurationLoadMode: boot #lazy
+  cacheConfigurationSeconds: 60

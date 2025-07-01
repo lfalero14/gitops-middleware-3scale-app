@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: sample-openid
+spec:
+  host: openid-testing.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com
+  to:
+    kind: Service
+    name: apicast-production
+  tls:
+    termination: edge
+  path: /
+  port:
+    targetPort: proxy
