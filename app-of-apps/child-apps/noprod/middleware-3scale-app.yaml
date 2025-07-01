@@ -14,7 +14,7 @@ spec:
           - list:
               elements:
                 - namespace: 3scale-tenant-dev
-                #- namespace: 3scale-tenant-testing
+                - namespace: 3scale-tenant-testing
   template:
     metadata:
       name: "{{name}}-{{namespace}}-app"
