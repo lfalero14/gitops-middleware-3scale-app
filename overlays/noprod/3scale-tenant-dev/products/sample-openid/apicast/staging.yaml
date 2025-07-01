@@ -24,7 +24,7 @@ spec:
   extendedMetrics: true
   deploymentEnvironment: staging
   adminPortalCredentialsRef:
-    name: dev-tenant-secret
+    name: dev-tenant-apicast-secret
   oidcLogLevel: info
   timezone: America/Lima
   replicas: 1

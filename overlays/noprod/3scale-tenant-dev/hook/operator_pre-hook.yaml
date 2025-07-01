@@ -20,6 +20,8 @@ spec:
               APIMANAGER="apimanager"
               TENANT="3scale-dev"
               NAMESPACE="3scale"
+              TENANT_SECRET="dev-tenant-secret"
+              APICAST_SECRET="dev-tenant-apicast-secret"
 
               for i in {1..60}; do
                 APIMANAGER_EXISTS=$(oc -n ${NAMESPACE} get apimanager ${APIMANAGER} --ignore-not-found)
@@ -51,6 +53,17 @@ spec:
                 fi
 
                 echo "APIManager y Tenant están disponibles. Continuando..."
+
+                ADMIN_URL=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.adminURL}' | base64 -d)
+                TOKEN=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.token}' | base64 -d)
+                ADMIN_PORTAL_URL="https://${TOKEN}@${ADMIN_URL#https://}"
+                
+                echo "Generando el secreto  ${APICAST_SECRET}..."
+                if oc get secret ${APICAST_SECRET} &>/dev/null; then
+                  oc delete secret ${APICAST_SECRET}
+                fi
+                oc create secret generic ${APICAST_SECRET} --from-literal AdminPortalURL="${ADMIN_PORTAL_URL}"
+
                 exit 0
               done
 
