@@ -26,4 +26,4 @@ spec:
   replicas: 1
   managementAPIScope: status
   configurationLoadMode: boot #lazy
-  cacheConfigurationSeconds: 0
+  cacheConfigurationSeconds: 60
