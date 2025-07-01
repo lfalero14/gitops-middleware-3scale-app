@@ -7,9 +7,9 @@ metadata:
     argocd.argoproj.io/sync-wave: "3"
 spec:
   name: "OpenID Test App"
-  description: "Aplicación de muestra configurada con autenticación OpenID en DEV"
+  description: "Aplicación de muestra configurada con autenticación OpenID en DEV."
   accountCR:
-    name: developeraccount-devsecops-dev
+    name: developeraccount-ingenieria-dev
   productCR:
     name: bs-hello-java-openid-dev
   applicationPlanName: basic

@@ -8,25 +8,25 @@ metadata:
 spec:
   name: "OpenID BS Hello Java"
   systemName: bs_hello_java_openid_product
-  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de DEV"
+  description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de DEV."
   providerAccountRef:
     name: dev-tenant-secret
 
   deployment:
     apicastSelfManaged:
-      stagingPublicBaseURL: "https://bs-hello-java-openid-dev-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
-      productionPublicBaseURL: "https://bs-hello-java-openid-dev.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      stagingPublicBaseURL: "https://openid-dev-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
+      productionPublicBaseURL: "https://openid-dev.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com"
       authentication:
         oidc:
           authenticationFlow:
             standardFlowEnabled: true
             implicitFlowEnabled: false
-            serviceAccountsEnabled: true            
+            serviceAccountsEnabled: true
             directAccessGrantsEnabled: false
           credentials: headers
           issuerType: keycloak
           issuerEndpointRef:
-            name: bs-hello-java-openid-dev-secret
+            name: openid-dev-secret
           jwtClaimWithClientID: azp
           jwtClaimWithClientIDType: plain
 
@@ -78,4 +78,4 @@ spec:
       setupFee: "0.00"
       costMonth: "0.00"
       #custom: false
-      #state: published
+      state: published

@@ -12,6 +12,6 @@ spec:
   email: admin-dev@redhat.com
   role: admin
   developerAccountRef:
-    name: developeraccount-devsecops-dev
+    name: developeraccount-ingenieria-dev
   providerAccountRef:
     name: dev-tenant-secret
