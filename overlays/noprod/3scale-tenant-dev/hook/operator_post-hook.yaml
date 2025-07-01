@@ -61,4 +61,25 @@ spec:
               done
               echo "Timeout esperando que Products estén sincronizados"
               exit 1
+
+        - name: reconcile-application
+          image: registry.redhat.io/ubi8/python-312:latest
+          command: ["python", "/config/reconcile_apps.py"]
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              readOnly: true
+            - name: apps-volume
+              mountPath: /apps
+              readOnly: true
+          envFrom:
+            - secretRef:
+                name: dev-tenant-secret
       restartPolicy: Never
+      volumes:
+        - name: config-volume
+          configMap:
+            name: reconcile-script
+        - name: apps-volume
+          secret:
+            secretName: reconcile-application-secret

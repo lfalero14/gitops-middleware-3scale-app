@@ -11,7 +11,6 @@ resources:
   - apicast/production.yaml
   - apicast/staging.yaml
   - products/openid-secret.yaml
-  - job/reconcile-application.yaml
 
   - backends/bs-hello-java.yaml
 
