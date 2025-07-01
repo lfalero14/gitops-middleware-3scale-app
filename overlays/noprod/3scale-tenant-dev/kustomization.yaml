@@ -23,4 +23,4 @@ generatorOptions:
 secretGenerator:
   - name: reconcile-application-secret
     files:
-      - products/*/applications/*.yaml
+      - products/sample-openid/applications/*.yaml
