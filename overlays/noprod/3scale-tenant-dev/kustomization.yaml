@@ -1,16 +1,26 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+bases:
+  - ../../base
 resources:
   - hook/operator_pre-hook.yaml
   - hook/operator_post-hook.yaml
   - accounts/developeraccount-ingenieria.yaml
   - accounts/developeruser-admin-secret.yaml
   - accounts/developeruser-admin.yaml
+  - apicast/production.yaml
+  - apicast/staging.yaml
   - products/openid-secret.yaml
+  - job/reconcile-application.yaml
 
   - backends/bs-hello-java.yaml
 
-  - products/sample-openid/bs-hello-java.yaml
-  - products/sample-openid/apicast/production.yaml
-  - products/sample-openid/apicast/staging.yaml
-  #- products/applications/application-sample-openid.yaml
+  - products/sample-openid/sample-openid.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: reconcile-application-secret
+    files:
+      - products/*/applications/*.yaml
