@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: post-sync-promote-products-dev
+  name: post-sync-promote-products
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:

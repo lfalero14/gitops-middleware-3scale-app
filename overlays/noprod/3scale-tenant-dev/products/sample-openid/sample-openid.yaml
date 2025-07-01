@@ -1,7 +1,7 @@
 kind: Product
 apiVersion: capabilities.3scale.net/v1beta1
 metadata:
-  name: bs-hello-java-openid-dev
+  name: bs-hello-java-openid
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "2"
@@ -26,7 +26,7 @@ spec:
           credentials: headers
           issuerType: keycloak
           issuerEndpointRef:
-            name: 3scale-client-dev-secret
+            name: 3scale-client-secret
           jwtClaimWithClientID: azp
           jwtClaimWithClientIDType: plain
 
