@@ -16,16 +16,12 @@ spec:
   methods:
     get_hello_v1:
       friendlyName: "GET Hello V1"
-      description: ""
     get_hello_v2:
       friendlyName: "GET Hello V2"
-      description: ""
     get_date_v1:
       friendlyName: "GET Date V1"
-      description: ""
     get_date_v2:
       friendlyName: "GET Date V2"
-      description: ""
 
   mappingRules:
     - httpMethod: GET
