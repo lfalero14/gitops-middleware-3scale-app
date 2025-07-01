@@ -36,14 +36,14 @@ spec:
                   continue
                 fi
 
-                TENANT_EXISTS=$(oc -n ${NAMESPACE} get tenant ${TENANT} --ignore-not-found)
+                TENANT_EXISTS=$(oc get tenant ${TENANT} --ignore-not-found)
                 if [[ -z "${TENANT_EXISTS}" ]]; then
                   echo "[Intento $i] Tenant ${TENANT} aún no existe. Esperando 30s..."
                   sleep 30
                   continue
                 fi
 
-                TENANT_READY=$(oc -n ${NAMESPACE} get tenant ${TENANT} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
+                TENANT_READY=$(oc get tenant ${TENANT} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
                 if [[ "${TENANT_READY}" != "True" ]]; then
                   echo "[Intento $i] Tenant ${TENANT} no está listo aún. Esperando 30s..."
                   sleep 30
