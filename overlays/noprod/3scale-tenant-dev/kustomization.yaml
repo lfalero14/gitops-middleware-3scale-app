@@ -10,5 +10,7 @@ resources:
 
   - backends/bs-hello-java.yaml
 
-  - products/bs-hello-java-openid.yaml
-  #- applications/application-sample-openid.yaml
+  - products/sample-openid/bs-hello-java.yaml
+  - products/sample-openid/apicast/production.yaml
+  - products/sample-openid/apicast/staging.yaml
+  #- products/applications/application-sample-openid.yaml

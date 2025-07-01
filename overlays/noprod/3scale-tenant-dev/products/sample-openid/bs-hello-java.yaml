@@ -26,7 +26,7 @@ spec:
           credentials: headers
           issuerType: keycloak
           issuerEndpointRef:
-            name: openid-dev-secret
+            name: 3scale-client-dev-secret
           jwtClaimWithClientID: azp
           jwtClaimWithClientIDType: plain
 

@@ -1,7 +1,10 @@
 apiVersion: apps.3scale.net/v1alpha1
 kind: APIcast
 metadata:
-  name: sample-openid-dev-production
+  name: openid-dev-production
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   logLevel: info
   pathRoutingEnabled: false
@@ -11,11 +14,11 @@ spec:
     limits:
       cpu: 500m
       memory: 256Mi
-    #requests:
-    #  cpu: 500m
-    #  memory: 64Mi
+    requests:
+      cpu: 500m
+      memory: 64Mi
   exposedHost:
-    host: openid-dev-staging.apps.ocpnprod7.gp.inet
+    host: openid-dev-staging.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com
     tls:
       - {}
   extendedMetrics: true
