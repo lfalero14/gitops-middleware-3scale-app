@@ -11,4 +11,4 @@ spec:
     termination: edge
   path: /
   port:
-    targetPort: http
+    targetPort: proxy

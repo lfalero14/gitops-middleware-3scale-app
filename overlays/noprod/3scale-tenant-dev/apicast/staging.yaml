@@ -25,5 +25,5 @@ spec:
   timezone: America/Lima
   replicas: 1
   managementAPIScope: status
-  configurationLoadMode: lazy #boot
+  configurationLoadMode: boot #lazy
   cacheConfigurationSeconds: 0
