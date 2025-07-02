@@ -25,3 +25,12 @@ secretGenerator:
   - name: reconcile-application-secret
     files:
       - products/sample-openid/applications/app01.yaml
+
+vars:
+  - name: MY_SERVICE_NAME
+    objref:
+      kind: Secret
+      apiVersion: v1
+      name: dev-tenant-secret      
+    fieldref:
+      fieldpath: data.adminURL
