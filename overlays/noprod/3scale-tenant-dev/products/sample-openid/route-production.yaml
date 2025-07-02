@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: sample-openid
 spec:
-  host: openid-dev.{{namespace}}
+  host: openid-dev.apps.cluster-z44mr.z44mr.sandbox3222.opentlc.com
   to:
     kind: Service
     name: apicast-production
