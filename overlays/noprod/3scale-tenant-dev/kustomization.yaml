@@ -12,7 +12,8 @@ resources:
   - apicast/staging.yaml
   - products/openid-secret.yaml
 
-  - backends/bs-hello-java.yaml
+  - backends/bs-hello-java-bss.yaml
+  - backends/bs-hello-java-pmx.yaml
 
   - products/sample-openid/sample-openid.yaml
   - products/sample-openid/route-production.yaml
