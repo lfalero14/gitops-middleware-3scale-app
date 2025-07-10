@@ -31,7 +31,9 @@ spec:
           jwtClaimWithClientIDType: plain
 
   backendUsages:
-    bs_hello_java_backend:
+    bs_hello_java_bss_backend:
+      path: "/bss/"
+    bs_hello_java_pmx_backend:
       path: "/pmx/"
 
   methods:
@@ -46,18 +48,19 @@ spec:
 
   mappingRules:
     - httpMethod: GET
-      pattern: "/pmx/bs/v1/hello"
+      pattern: "/bss/bs/v1/hello"
       metricMethodRef: get_hello_v1
       increment: 1
       last: true
     - httpMethod: GET
-      pattern: "/pmx/bs/v2/hello"
-      metricMethodRef: get_hello_v2
+      pattern: "/bss/bs/v1/date"
+      metricMethodRef: get_date_v1
       increment: 1
       last: true
+
     - httpMethod: GET
-      pattern: "/pmx/bs/v1/date"
-      metricMethodRef: get_date_v1
+      pattern: "/pmx/bs/v2/hello"
+      metricMethodRef: get_hello_v2
       increment: 1
       last: true
     - httpMethod: GET

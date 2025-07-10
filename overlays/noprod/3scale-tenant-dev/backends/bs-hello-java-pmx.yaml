@@ -6,37 +6,23 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     argocd.argoproj.io/sync-wave: "1"
 spec:
-  name: "BS Hello Java"
-  systemName: bs_hello_java_backend
+  name: "BS Hello Java PMX"
+  systemName: bs_hello_java_pmx_backend
   description: "Backend del servicio Hello Java expuesto internamente a través de Service en OpenShift para el ambiente de DEV."
   privateBaseURL: "http://bs-hello-java.redhat.svc.cluster.local:8080"
   providerAccountRef:
     name: dev-tenant-secret
 
   methods:
-    get_hello_v1:
-      friendlyName: "GET Hello V1"
     get_hello_v2:
       friendlyName: "GET Hello V2"
-    get_date_v1:
-      friendlyName: "GET Date V1"
     get_date_v2:
       friendlyName: "GET Date V2"
 
   mappingRules:
     - httpMethod: GET
-      pattern: "/bs/v1/hello"
-      metricMethodRef: get_hello_v1
-      increment: 1
-      last: true
-    - httpMethod: GET
       pattern: "/bs/v2/hello"
       metricMethodRef: get_hello_v2
-      increment: 1
-      last: true
-    - httpMethod: GET
-      pattern: "/bs/v1/date"
-      metricMethodRef: get_date_v1
       increment: 1
       last: true
     - httpMethod: GET
