@@ -33,7 +33,7 @@ spec:
                 ADMIN_URL=$(oc get secret ${TENANT_SECRET} -o jsonpath='{.data.adminURL}' | base64 -d)
 
                 echo "[INFO] Descargando lista de Products..."
-                curl -s -o /tmp/services.xml "${ADMIN_URL}/admin/api/services.xml?access_token=${TOKEN}&page=1&per_page=500"
+                curl -s -k -o /tmp/services.xml "${ADMIN_URL}/admin/api/services.xml?access_token=${TOKEN}&page=1&per_page=500"
                 IDS=$(xmllint --xpath "//service/id/text()" /tmp/services.xml)
 
                 echo ""
@@ -48,7 +48,7 @@ spec:
                 echo ""
                 echo "[INFO] Promoviendo configuración de APIcast al entorno de *production*..."
                 for ID in ${IDS}; do
-                  curl -s -o /tmp/latest.json "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/latest.json?access_token=${TOKEN}"
+                  curl -s -k -o /tmp/latest.json "${ADMIN_URL}/admin/api/services/${ID}/proxy/configs/sandbox/latest.json?access_token=${TOKEN}"
                   VERSION=$(grep '"version"' /tmp/latest.json | head -n1 | sed -E 's/.*"version":\s*([0-9]+).*/\1/')
                   echo "[INFO] Promoviendo Product ID *${ID}* a la versión *${VERSION}*"
 
@@ -75,6 +75,13 @@ spec:
           envFrom:
             - secretRef:
                 name: testing-tenant-secret
+          #env:
+          #  - name: HTTP_PROXY
+          #    value: "http://usuario:password@proxy.miempresa.com:3128"
+          #  - name: HTTPS_PROXY
+          #    value: "http://usuario:password@proxy.miempresa.com:3128"
+          #  - name: NO_PROXY
+          #    value: "localhost,127.0.0.1,.svc,.cluster.local,3scale-admin.myempresa.com"
       restartPolicy: Never
       volumes:
         - name: config-volume
