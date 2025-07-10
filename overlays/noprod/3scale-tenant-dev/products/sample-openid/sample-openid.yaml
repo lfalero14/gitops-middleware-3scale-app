@@ -32,7 +32,7 @@ spec:
 
   backendUsages:
     bs_hello_java_backend:
-      path: "/"
+      path: "/pmx/"
 
   methods:
     get_hello_v1:
@@ -46,22 +46,22 @@ spec:
 
   mappingRules:
     - httpMethod: GET
-      pattern: "/bs/v1/hello"
+      pattern: "/pmx/bs/v1/hello"
       metricMethodRef: get_hello_v1
       increment: 1
       last: true
     - httpMethod: GET
-      pattern: "/bs/v2/hello"
+      pattern: "/pmx/bs/v2/hello"
       metricMethodRef: get_hello_v2
       increment: 1
       last: true
     - httpMethod: GET
-      pattern: "/bs/v1/date"
+      pattern: "/pmx/bs/v1/date"
       metricMethodRef: get_date_v1
       increment: 1
       last: true
     - httpMethod: GET
-      pattern: "/bs/v2/date"
+      pattern: "/pmx/bs/v2/date"
       metricMethodRef: get_date_v2
       increment: 1
       last: true
